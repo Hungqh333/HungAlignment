@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.05.0.1">
+<procedure name="main">
+<interface/>
+<body>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Khởi tạo MC Protocol _ Định dạng Frame Binary3E TCP Port 2001</c>
+<l>open_socket_connect ('192.168.3.39', 3000, ['protocol', 'timeout'], ['TCP4', 3.0], PLC_Socket)</l>
+<l>Data_Tuple := '1'</l>
+<c>* Nhận về từ PLC các định dạng String, Word, DWord</c>
+<l>Melsoft_3E_Revc ('String', 3001, 10, PLC_Socket, Data_Tuple, CCode)</l>
+<c>* Gửi sang từ PLC các định dạng String, Word, DWord</c>
+<l>Melsoft_3E_Send ('Word', [1, 12, 123, 1234], 4002, PLC_Socket, CCode)</l>
+<c>* Tách các bit từ Word</c>
+<l>Get_Bit_Of_Word (1000, [1,2,3], B_Out)</l>
+<c>* Thay đổi các bit của Word</c>
+<l>Set_Bit_To_Word (1000, [1,2,3], [true, false, true], D_Out)</l>
+<c></c>
+<l>return ()</l>
+<c></c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="handeye_stationary_camera">
+<interface>
+<ic>
+<par name="listRow_Img" base_type="ctrl" dimension="0"/>
+<par name="listCol_Img" base_type="ctrl" dimension="0"/>
+<par name="listAgl_Img" base_type="ctrl" dimension="0"/>
+<par name="listX_Robot" base_type="ctrl" dimension="0"/>
+<par name="listY_Robot" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="HomMat_ImgtoWorld" base_type="ctrl" dimension="0"/>
+<par name="HomMat_WorldtoImg" base_type="ctrl" dimension="0"/>
+<par name="thetaGet" base_type="ctrl" dimension="0"/>
+<par name="TCP_to_Tool" base_type="ctrl" dimension="0"/>
+<par name="Tool_to_TCP" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>listdata_xOut := []</l>
+<l>listdata_yOut := []</l>
+<c>* Interpolate Rotary Center from 2 points rotary</c>
+<l>x1 := listRow_Img[9]</l>
+<l>y1 := listCol_Img[9]</l>
+<l>thetaGet := listAgl_Img[9]</l>
+<c></c>
+<l>x2 := listRow_Img[10]</l>
+<l>y2 := listCol_Img[10]</l>
+<l>thetaGet2 := listAgl_Img[10]</l>
+<c></c>
+<c></c>
+<c>***** Interpolate Rotary Points</c>
+<c>* Get center rotary in Camera pose (Cal Center Rotary in Cam Pose)</c>
+<c></c>
+<l>xGetOC := (x1 * cos((2 * thetaGet - 2 * thetaGet2)) + x2 * cos((2 * thetaGet - 2 * thetaGet2)) - 0.2E1 * x1 * cos((thetaGet + thetaGet2)) - 0.2E1 * x2 * cos((thetaGet + thetaGet2)) - \
+          0.2E1 * x1 * cos((thetaGet - thetaGet2)) - 0.2E1 * x2 * cos((thetaGet - thetaGet2)) - sin((2 * thetaGet2)) * y1 + y2 * sin((2 * thetaGet2)) +x1 * cos((2 * thetaGet2)) + x2 * cos((2 * thetaGet2)) \
+           + y1 * sin((2 * thetaGet)) - sin((2 * thetaGet)) * y2 + x1 * cos((2 * thetaGet)) + x2 * cos((2 * thetaGet)) + y1 * sin((2 * thetaGet - 2 * thetaGet2)) - y2 * sin((2 * thetaGet - 2 * thetaGet2)) + x1 + x2) / (0.2E1 + 0.2E1 * cos((2 * thetaGet2)) +\
+          0.2E1 * cos((2 * thetaGet)) - 0.4E1 * cos((thetaGet + thetaGet2)) - 0.4E1 * cos((thetaGet - thetaGet2)) + 0.2E1 * cos((2 * thetaGet - 2 * thetaGet2)))</l>
+<c></c>
+<l>yGetOC := (y1 * cos((2 * thetaGet - 2 * thetaGet2)) + y2 * cos((2 * thetaGet - 2 * thetaGet2)) - 0.2E1 * y1 * cos((thetaGet + thetaGet2)) - 0.2E1 * y2 * cos((thetaGet + thetaGet2)) \
+          - 0.2E1 * y1 * cos((thetaGet - thetaGet2)) - 0.2E1 * y2 * cos((thetaGet - thetaGet2)) + x1 * sin((2 * thetaGet2)) - x2 * sin((2 * thetaGet2)) + cos((2 * thetaGet2)) * y1 + \
+          y2 * cos((2 * thetaGet2)) - x1 * sin((2 * thetaGet)) + x2 * sin((2 * thetaGet)) + y1 * cos((2 * thetaGet)) + cos((2 * thetaGet)) * y2 - x1 * sin((2 * thetaGet - 2 * thetaGet2))\
+          + x2 * sin((2 * thetaGet - 2 * thetaGet2)) + y1 + y2) / (0.2E1 + 0.2E1 * cos((2 * thetaGet2)) + 0.2E1 * cos((2 * thetaGet)) - 0.4E1 * cos((thetaGet + thetaGet2)) - 0.4E1 * cos((thetaGet - thetaGet2)) + 0.2E1 * cos((2 * thetaGet - 2 * thetaGet2)))</l>
+<c></c>
+<c>* Get object in center rotary pose</c>
+<c></c>
+<l>xobincenterr := ((y1 * sin((2 * thetaGet)) - yGetOC * sin((2 * thetaGet)) + x1 * cos((2 * thetaGet)) - xGetOC * cos((2 * thetaGet)) + x1 - xGetOC) / cos(thetaGet) / 0.2e1)</l>
+<l>yobincenterr := (-sin(thetaGet) * x1 + cos(thetaGet) * y1 + sin(thetaGet) * xGetOC - yGetOC * cos(thetaGet))</l>
+<c></c>
+<c></c>
+<c></c>
+<c>* Center Rotary in Object Pose   (ObjectHCenterRotary)</c>
+<c></c>
+<l>create_pose (xobincenterr, yobincenterr, 0, 0, 0, 0, 'Rp+T', 'gba', 'point', TCP_to_Tool)</l>
+<l>pose_invert (TCP_to_Tool, Tool_to_TCP)</l>
+<c></c>
+<c></c>
+<c>* Create pose  </c>
+<c>* Create list 9 point robot</c>
+<c>* 9 point input handeye</c>
+<c></c>
+<l>for Index := 0 to 8 by 1</l>
+<l>    x := listRow_Img[Index]</l>
+<l>y := listCol_Img[Index]</l>
+<l>    theta := listAgl_Img[Index]</l>
+<l>    create_pose (x, y, 0, 0, 0, theta, 'Rp+T', 'gba', 'point', Ob_in_Campose)</l>
+<l>    pose_compose (Ob_in_Campose, Tool_to_TCP, Center_In_CamPose)</l>
+<l>    point_x := Center_In_CamPose[0]</l>
+<l>    point_y := Center_In_CamPose[1]</l>
+<l>    tuple_concat (listdata_xOut,point_x,  listdata_xOut)</l>
+<l>    tuple_concat (listdata_yOut,point_y,  listdata_yOut)</l>
+<l>    listdataRobot_x[Index] := listX_Robot[Index]</l>
+<l>    listdataRobot_y[Index] := listY_Robot[Index]</l>
+<l>endfor</l>
+<l>vector_to_hom_mat2d (listdata_xOut, listdata_yOut, listdataRobot_x, listdataRobot_y, HomMat_ImgtoWorld)</l>
+<l>vector_to_hom_mat2d (listdataRobot_x, listdataRobot_y, listdata_xOut, listdata_yOut, HomMat_WorldtoImg)</l>
+<l>return ()</l>
+</body>
+<docu id="handeye_stationary_camera">
+<parameters>
+<parameter id="HomMat_ImgtoWorld"/>
+<parameter id="HomMat_WorldtoImg"/>
+<parameter id="TCP_to_Tool"/>
+<parameter id="Tool_to_TCP"/>
+<parameter id="listAgl_Img"/>
+<parameter id="listCol_Img"/>
+<parameter id="listRow_Img"/>
+<parameter id="listX_Robot"/>
+<parameter id="listY_Robot"/>
+<parameter id="thetaGet"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

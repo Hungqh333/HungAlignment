@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.2.0">
+<procedure name="Set_Bit_To_Word">
+<interface>
+<ic>
+<par name="Data" base_type="ctrl" dimension="0"/>
+<par name="Order_Tuple" base_type="ctrl" dimension="0"/>
+<par name="Order_Value" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="D_Out" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>D_In := Data</l>
+<l>for I := 0 to |Order_Tuple| - 1 by 1</l>
+<l>      if (Order_Value[I])</l>
+<l>           tuple_bor (D_In, int(pow(2, Order_Tuple[I])), D_In) </l>
+<l>      else</l>
+<l>            tuple_bxor (0xffff, int(pow(2, Order_Tuple[I])), Temp_Xor)</l>
+<l>            tuple_band (D_In, Temp_Xor, D_In)</l>
+<l>      endif</l>
+<l>endfor</l>
+<l>D_Out := D_In</l>
+<l>return ()</l>
+</body>
+<docu id="Set_Bit_To_Word">
+<parameters>
+<parameter id="D_Out">
+<description lang="en_US">Giá trị đầu ra</description>
+</parameter>
+<parameter id="Data">
+<description lang="en_US">Giá trị đầu vào</description>
+</parameter>
+<parameter id="Order_Tuple">
+<description lang="en_US">Danh sách bit cần thay đổi</description>
+</parameter>
+<parameter id="Order_Value">
+<description lang="en_US">Giá trị thay đổi tương ứng, dạng bit</description>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

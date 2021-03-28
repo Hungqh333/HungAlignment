@@ -1,0 +1,107 @@
+13:54:47: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 253
+14:12:23: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 254
+14:28:30: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 255
+14:31:57: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 256
+16:25:40: System.DivideByZeroException: Attempted to divide by zero.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 301
+16:25:42: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HFramegrabber..ctor(String name, Int32 horizontalResolution, Int32 verticalResolution, Int32 imageWidth, Int32 imageHeight, Int32 startRow, Int32 startColumn, String field, Int32 bitsPerChannel, String colorSpace, Double generic, String externalTrigger, String cameraType, String device, Int32 port, Int32 lineIn)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 636
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 313
+16:25:44: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 298
+16:25:44: System.NullReferenceException: Object reference not set to an instance of an object.
+   at RTCVision.frmReadCode1.disconnect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 649
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 309
+16:25:54: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 298
+16:25:54: System.NullReferenceException: Object reference not set to an instance of an object.
+   at RTCVision.frmReadCode1.disconnect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 649
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 309
+16:25:57: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 298
+16:25:57: System.NullReferenceException: Object reference not set to an instance of an object.
+   at RTCVision.frmReadCode1.disconnect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 649
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 309
+16:25:58: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 298
+16:25:58: System.NullReferenceException: Object reference not set to an instance of an object.
+   at RTCVision.frmReadCode1.disconnect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 649
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 309
+16:30:30: System.DivideByZeroException: Attempted to divide by zero.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 305
+16:30:32: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HFramegrabber..ctor(String name, Int32 horizontalResolution, Int32 verticalResolution, Int32 imageWidth, Int32 imageHeight, Int32 startRow, Int32 startColumn, String field, Int32 bitsPerChannel, String colorSpace, Double generic, String externalTrigger, String cameraType, String device, Int32 port, Int32 lineIn)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 642
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 319
+16:30:37: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 299
+16:30:37: System.NullReferenceException: Object reference not set to an instance of an object.
+   at RTCVision.frmReadCode1.disconnect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 655
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 315
+16:30:54: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 299
+16:30:54: System.NullReferenceException: Object reference not set to an instance of an object.
+   at RTCVision.frmReadCode1.disconnect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 655
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 315
+16:31:39: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 299
+16:33:21: System.DivideByZeroException: Attempted to divide by zero.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 305
+16:33:23: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HFramegrabber..ctor(String name, Int32 horizontalResolution, Int32 verticalResolution, Int32 imageWidth, Int32 imageHeight, Int32 startRow, Int32 startColumn, String field, Int32 bitsPerChannel, String colorSpace, Double generic, String externalTrigger, String cameraType, String device, Int32 port, Int32 lineIn)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 642
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 319
+16:33:23: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 299
+16:33:25: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HFramegrabber..ctor(String name, Int32 horizontalResolution, Int32 verticalResolution, Int32 imageWidth, Int32 imageHeight, Int32 startRow, Int32 startColumn, String field, Int32 bitsPerChannel, String colorSpace, Double generic, String externalTrigger, String cameraType, String device, Int32 port, Int32 lineIn)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 642
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 319
+16:33:44: HalconDotNet.HOperatorException: HALCON error #2453: HALCON handle is NULL in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HImage.GrabImage(HFramegrabber acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020\vs2005\frmReadCode1.cs:line 299
+17:26:43: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 260
+17:42:44: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 260
+17:46:58: System.DivideByZeroException: Attempted to divide by zero.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 306

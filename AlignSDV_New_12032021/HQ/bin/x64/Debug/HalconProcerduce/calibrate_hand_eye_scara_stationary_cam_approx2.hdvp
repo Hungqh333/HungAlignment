@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.3.0">
+<procedure name="calibrate_hand_eye_scara_stationary_cam_approx2">
+<interface>
+<ic>
+<par name="CameraParam" base_type="ctrl" dimension="0"/>
+<par name="CalibrationPointsRow" base_type="ctrl" dimension="0"/>
+<par name="CalibrationPointsColumn" base_type="ctrl" dimension="0"/>
+<par name="CalibrationRobotX" base_type="ctrl" dimension="0"/>
+<par name="CalibrationRobotY" base_type="ctrl" dimension="0"/>
+<par name="CalibrationRobotZ" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="CamInBasePose" base_type="ctrl" dimension="0"/>
+<par name="CPInCamPose" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>** Start</c>
+<l>CalibrationPointsXBaseTemp := CalibrationRobotX[0]</l>
+<l>CalibrationPointsYBaseTemp := CalibrationRobotY[0]</l>
+<l>CalibrationPointsZBaseTemp := CalibrationRobotZ[0]</l>
+<l>create_pose (CalibrationPointsXBaseTemp, CalibrationPointsYBaseTemp, CalibrationPointsZBaseTemp, 0, 0, 0, 'Rp+T', 'gba', 'point', ToolInBasePose)</l>
+<l>pose_invert (ToolInBasePose, BaseInToolPose)</l>
+<c></c>
+<l>CalibrationPointsXBase := []</l>
+<l>CalibrationPointsYBase := []</l>
+<l>CalibrationPointsZBase := []</l>
+<l>NumCalibrationPoints := |CalibrationPointsRow|</l>
+<l>for I := 0 to NumCalibrationPoints - 1 by 1</l>
+<c>    * Get the robot pose for the current calibration point</c>
+<c>    </c>
+<l>    CalibrationPointsXBaseTempI := CalibrationRobotX[I]</l>
+<l>    CalibrationPointsYBaseTempI := CalibrationRobotY[I]</l>
+<l>    CalibrationPointsZBaseTempI := CalibrationRobotZ[I]</l>
+<l>    create_pose (CalibrationPointsXBaseTempI, CalibrationPointsYBaseTempI, CalibrationPointsZBaseTempI, 0, 0, 0, 'Rp+T', 'gba', 'point', ToolInBasePoseI)</l>
+<c>    * </c>
+<c>    * Determine coordinates of calibration points in base coordinate system.</c>
+<c>    * Note that this presumes that the tool-center-point lies at a (unknown)</c>
+<c>    * position (0, 0, Z) in the tool coordinate system, i.e., the gripper or</c>
+<c>    * vacuum cup is centered with respect to the z axis of the tool</c>
+<c>    * coordinate system. Note also that - based on this assumption - we do</c>
+<c>    * not determine the (unknow) distance z of the tool-center-point from</c>
+<c>    * the origin of the tool coordinate system (the mounting point of the tool).</c>
+<c>    * </c>
+<c>    * Determine coordinates of calibration points in object coordinate system</c>
+<c>    * (relative to first calibration point)</c>
+<l>    pose_compose (BaseInToolPose, ToolInBasePoseI, ToolIInTool0Pose)</l>
+<c>    * Note that the z axis of the base coordinate system points upwards</c>
+<c>    * while the z axis of the coordinate system in which the calibration points</c>
+<c>    * are given points downwards (similar to the coordinate system of a HALCON</c>
+<c>    * calibration plate). Therefore, rotate the resulting pose by</c>
+<c>    * 180 degrees around the x (or y) axis.</c>
+<l>    pose_to_hom_mat3d (ToolIInTool0Pose, HomMat3D)</l>
+<l>    hom_mat3d_rotate (HomMat3D, rad(180), 'x', 0, 0, 0, HomMat3DRotate)</l>
+<l>    hom_mat3d_to_pose (HomMat3DRotate, ToolIInTool0PoseRot)</l>
+<c>    * The translational part of the rotated relative pose between</c>
+<c>    * the calibration points represents the object coordinates</c>
+<c>    * of the calibration points</c>
+<l>    CalibrationPointsXObj[I] := ToolIInTool0PoseRot[0]</l>
+<l>    CalibrationPointsYObj[I] := ToolIInTool0PoseRot[1]</l>
+<l>    CalibrationPointsZObj[I] := ToolIInTool0PoseRot[2]</l>
+<l>endfor</l>
+<c>* </c>
+<c>* Determine the pose of the camera in the base coordinate system</c>
+<l>vector_to_pose (CalibrationRobotX, CalibrationRobotY, CalibrationRobotZ, CalibrationPointsRow, CalibrationPointsColumn, CameraParam, 'iterative', 'error', BaseInCamPose, Quality)</l>
+<l>pose_invert (BaseInCamPose, CamInBasePose)</l>
+<c>* </c>
+<c>* Determine the pose of the measurement plane and a rectification map</c>
+<c>* to rectify the image in order to make it possible to find the objects</c>
+<c>* even if the camera looks tilted onto the measurement plane</c>
+<c>* </c>
+<c>* Determine the pose of the measurement plane in the camera coordinates system</c>
+<l>vector_to_pose (CalibrationPointsXObj, CalibrationPointsYObj, CalibrationPointsZObj, CalibrationPointsRow, CalibrationPointsColumn, CameraParam, 'iterative', 'error', CPInCamPose, Quality)</l>
+<l>return ()</l>
+</body>
+<docu id="calibrate_hand_eye_scara_stationary_cam_approx2">
+<abstract lang="en_US">calibrate_hand_eye_scara_stationary_cam_approx calculates the pose of the camera in the robot base coordinate system (CamInBasePose) and the pose of the plane that is defined by the calibration points (CPInCamPose) from the coordinates of at least five calibration points given in the base coordinate system (up to an unknown translation in z) and from the respective image coordinates.</abstract>
+<chapters lang="en_US">
+<item>Calibration</item>
+<item>Hand-Eye</item>
+</chapters>
+<short lang="en_US">Perform an approximate hand-eye calibration sor SCARA robots and determine the measurement plane.</short>
+<parameters>
+<parameter id="CPInCamPose">
+<default_type>real</default_type>
+<description lang="en_US">Pose of the  plane defined by the calibration points in the camera coordinate system.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>pose</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+</parameter>
+<parameter id="CalibrationPointsColumn">
+<default_type>real</default_type>
+<description lang="en_US">Column coordinates of the calibration points.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>point.x</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+</parameter>
+<parameter id="CalibrationPointsRow">
+<default_type>real</default_type>
+<description lang="en_US">Row coordinates of the calibration points.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>point.y</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+</parameter>
+<parameter id="CalibrationRobotX"/>
+<parameter id="CalibrationRobotY"/>
+<parameter id="CalibrationRobotZ"/>
+<parameter id="CamInBasePose">
+<default_type>real</default_type>
+<description lang="en_US">Pose of the camera in the robot base coordinate system.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>pose</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+</parameter>
+<parameter id="CameraParam">
+<default_type>real</default_type>
+<description lang="en_US">Camera parameters.</description>
+<mixed_type>optional</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>number</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

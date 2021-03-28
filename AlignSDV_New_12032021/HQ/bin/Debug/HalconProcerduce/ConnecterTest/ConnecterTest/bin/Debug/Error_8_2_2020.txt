@@ -1,0 +1,629 @@
+9:1:7: HalconDotNet.HOperatorException: HALCON error #4056: Image data management: object-ID is NULL (0) in operator disp_obj
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HObject.DispObj(HWindow windowHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 325
+9:1:31: HalconDotNet.HOperatorException: HALCON error #4056: Image data management: object-ID is NULL (0) in operator disp_obj
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HObject.DispObj(HWindow windowHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 325
+9:2:26: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 259
+9:2:37: HalconDotNet.HOperatorException: HALCON error #4056: Image data management: object-ID is NULL (0) in operator disp_obj
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HObject.DispObj(HWindow windowHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 325
+9:4:4: HalconDotNet.HOperatorException: HALCON error #4056: Image data management: object-ID is NULL (0) in operator disp_obj
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HObject.DispObj(HWindow windowHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 325
+9:15:8: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 259
+9:34:35: HalconDotNet.HOperatorException: HALCON error #5322: Image acquisition: timeout in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:36: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:36: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:36: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:36: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:37: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:38: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:38: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:40: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:40: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:41: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:41: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:42: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:42: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:43: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:43: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:43: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:43: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:43: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:44: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:44: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:44: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:44: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:44: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:44: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:45: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:45: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:45: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:45: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:45: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:45: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:34:46: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:34:46: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:35:9: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:35:9: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:35:50: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:35:51: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:1: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:11: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:11: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:12: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:12: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:13: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:13: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:13: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:13: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:13: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:13: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:14: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:14: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:14: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:14: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:14: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:14: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:15: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:15: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:15: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:15: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:15: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:15: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:15: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:15: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:15: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:16: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:16: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:16: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:16: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:16: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:16: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:16: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:16: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:17: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:17: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:17: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:17: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:17: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:17: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:17: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:17: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:17: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:18: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:18: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:18: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:18: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:18: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:18: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:18: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:19: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:19: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:19: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:19: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:19: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:19: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:19: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:19: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:20: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:20: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:20: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:20: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:20: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:20: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:20: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:21: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:21: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:21: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:36:22: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:36:22: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:37:2: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:37:2: HalconDotNet.HOperatorException: HALCON error #5312: Image acquisition: device cannot be initialized in operator open_framegrabber
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.OpenFramegrabber(HTuple name, HTuple horizontalResolution, HTuple verticalResolution, HTuple imageWidth, HTuple imageHeight, HTuple startRow, HTuple startColumn, HTuple field, HTuple bitsPerChannel, HTuple colorSpace, HTuple generic, HTuple externalTrigger, HTuple cameraType, HTuple device, HTuple port, HTuple lineIn, HTuple& acqHandle)
+   at RTCVision.frmReadCode1.connect() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 639
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 320
+9:42:18: HalconDotNet.HOperatorException: HALCON error #1401: Wrong number of values of control parameter 1 in operator grab_image
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.GrabImage(HObject& image, HTuple acqHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 300
+9:42:27: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\T2\RTCVisionCode_07_02_2020_V2\vs2005\frmReadCode1.cs:line 259

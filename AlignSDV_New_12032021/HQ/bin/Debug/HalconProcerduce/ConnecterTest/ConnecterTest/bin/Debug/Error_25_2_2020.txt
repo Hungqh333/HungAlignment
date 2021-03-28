@@ -1,0 +1,2 @@
+11:20:47: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\2.ITM\Code\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 259

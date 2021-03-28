@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="create_origin_from_region">
+<interface>
+<io>
+<par name="Region_Binary" base_type="iconic" dimension="0"/>
+<par name="Region_First" base_type="iconic" dimension="0"/>
+<par name="Region_Second" base_type="iconic" dimension="0"/>
+<par name="Image" base_type="iconic" dimension="0"/>
+</io>
+<ic>
+<par name="HomMat2D_TransRegion" base_type="ctrl" dimension="0"/>
+<par name="showOrigin" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="RowProj" base_type="ctrl" dimension="0"/>
+<par name="ColProj" base_type="ctrl" dimension="0"/>
+<par name="Angle" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c></c>
+<c>*** Get Image Size</c>
+<c></c>
+<l>get_image_size (Image, Width, Height)</l>
+<c></c>
+<l>affine_trans_region (Region_Binary, Region_Binary_Affined, HomMat2D_TransRegion, 'nearest_neighbor')</l>
+<l>affine_trans_region (Region_First, Region_First_Affined, HomMat2D_TransRegion, 'nearest_neighbor')</l>
+<l>affine_trans_region (Region_Second, Region_Second_Affined, HomMat2D_TransRegion, 'nearest_neighbor')</l>
+<c></c>
+<c>**** Get Feature of Rectangle 2</c>
+<c></c>
+<l>region_features (Region_Binary_Affined, ['row','column','phi','rect2_len1','rect2_len2'], Value0)</l>
+<l>region_features (Region_First_Affined, ['row','column','phi','rect2_len1','rect2_len2'], Value1)</l>
+<l>region_features (Region_Second_Affined, ['row','column','phi','rect2_len1','rect2_len2'], Value2)</l>
+<c></c>
+<l>for Index0 := 5 to 0.4 by -0.5</l>
+<l>    gen_measure_rectangle2 (Value0[0], Value0[1], Value0[2], Value0[3], Value0[4], Width, Height, 'nearest_neighbor', MeasureHandle00)</l>
+<l>    measure_pos (Image, MeasureHandle00, Index0, 30, 'all', 'first', RowEdge, ColumnEdge, Amplitude, Distance)</l>
+<l>    if (|RowEdge|&gt;0)</l>
+<l>        break</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>for Index1 := 5 to 0.4 by -0.5</l>
+<l>    gen_measure_rectangle2 (Value1[0], Value1[1], Value1[2], Value1[3], Value1[4], Width, Height, 'nearest_neighbor', MeasureHandle01)</l>
+<l>    measure_pos (Image, MeasureHandle01, Index1, 30, 'negative', 'first', RowEdge1, ColumnEdge1, Amplitude1, Distance1)</l>
+<l>    if (|RowEdge1|&gt;0)</l>
+<l>        break</l>
+<l>    endif</l>
+<l>endfor</l>
+<l>for Index2 := 5 to 0.4 by -0.5</l>
+<l>    gen_measure_rectangle2 (Value2[0], Value2[1], Value2[2], Value2[3], Value2[4], Width, Height, 'nearest_neighbor', MeasureHandle02)</l>
+<l>    measure_pos (Image, MeasureHandle02, Index2, 30, 'negative', 'first', RowEdge2, ColumnEdge2, Amplitude2, Distance2)</l>
+<l>    if (|RowEdge2|&gt;0)</l>
+<l>        break</l>
+<l>    endif</l>
+<l>endfor</l>
+<c></c>
+<c></c>
+<l>dev_display (Image)</l>
+<l>gen_circle (Circle, RowEdge, ColumnEdge, 1)</l>
+<l>gen_circle (Circle1, RowEdge1, ColumnEdge1, 1)</l>
+<l>gen_circle (Circle2, RowEdge2, ColumnEdge2, 1)</l>
+<c></c>
+<c>**** Projection 1 point to 2 point</c>
+<l>projection_pl (RowEdge, ColumnEdge, RowEdge2, ColumnEdge2, RowEdge1, ColumnEdge1,  RowProj, ColProj)</l>
+<l>gen_circle (Circle3, RowProj, ColProj, 1)</l>
+<l>angle_lx (RowEdge, ColumnEdge, RowProj, ColProj, Angle)</l>
+<l>if (showOrigin =='true')</l>
+<l>    gen_cross_contour_xld (Cross, RowProj, ColProj, 10000, Angle)</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="create_origin_from_region">
+<parameters>
+<parameter id="Angle"/>
+<parameter id="ColProj"/>
+<parameter id="HomMat2D_TransRegion"/>
+<parameter id="Image"/>
+<parameter id="Region_Binary"/>
+<parameter id="Region_First"/>
+<parameter id="Region_Second"/>
+<parameter id="RowProj"/>
+<parameter id="showOrigin"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

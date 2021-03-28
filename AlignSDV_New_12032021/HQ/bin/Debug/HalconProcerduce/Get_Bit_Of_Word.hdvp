@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.2.0">
+<procedure name="Get_Bit_Of_Word">
+<interface>
+<ic>
+<par name="Data" base_type="ctrl" dimension="0"/>
+<par name="Order_Tuple" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Out_Tuple" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>*^^</c>
+<c>* Get Bit Dxxx.[n]</c>
+<c>* Đầu vào là giá trị Word + Tuple danh sách các bit cần lấy</c>
+<c>* Đầu ra là tuple giá trị các bit trong danh sách vào</c>
+<c></c>
+<l>Out_Tuple := []</l>
+<l>for I := 0 to |Order_Tuple| - 1 by 1</l>
+<l>resul_Get_b := Data band int(pow(2, Order_Tuple[I]))</l>
+<l>      if (resul_Get_b == 0)</l>
+<l>            bit_Value := false</l>
+<l>      else</l>
+<l>            bit_Value := true</l>
+<l>      endif</l>
+<l>      Out_Tuple := [Out_Tuple, bit_Value]</l>
+<l>endfor</l>
+<l>return ()</l>
+</body>
+<docu id="Get_Bit_Of_Word">
+<parameters>
+<parameter id="Data"/>
+<parameter id="Order_Tuple"/>
+<parameter id="Out_Tuple"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

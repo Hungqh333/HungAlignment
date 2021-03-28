@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="handeye_stationary_11_point">
+<interface>
+<ic>
+<par name="listRow_Img_handeye" base_type="ctrl" dimension="0"/>
+<par name="listCol_Img_handeye" base_type="ctrl" dimension="0"/>
+<par name="listAgl_Img_handeye" base_type="ctrl" dimension="0"/>
+<par name="listX_Robot_handeye" base_type="ctrl" dimension="0"/>
+<par name="listY_Robot_handeye" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="HomMat2DImgtoWorld" base_type="ctrl" dimension="0"/>
+<par name="HomMat2DWorldtoImg" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<l>listdata_xOut := []</l>
+<l>listdata_yOut := []</l>
+<c>* Interpolate Rotary Center from 2 points rotary</c>
+<l>x1 := listRow_Img_handeye[9]</l>
+<l>y1 := listCol_Img_handeye[9]</l>
+<l>thetaGet := listAgl_Img_handeye[9]</l>
+<c></c>
+<l>x2 := listRow_Img_handeye[10]</l>
+<l>y2 := listCol_Img_handeye[10]</l>
+<l>thetaGet2 := listAgl_Img_handeye[10]</l>
+<c></c>
+<l>interpolate_rotate_point (x1, y1, thetaGet, x2, y2, thetaGet2, xGetOC, yGetOC, xobincenterr, yobincenterr, Ob_In_CenterRPose, CenterR_In_ObPose)</l>
+<c></c>
+<c>* Create pose  </c>
+<c>* Create list 9 point robot</c>
+<c>* 9 point input handeye</c>
+<c></c>
+<l>for Index := 0 to 8 by 1</l>
+<l>    x := listRow_Img_handeye[Index]</l>
+<l>    y := listCol_Img_handeye[Index]</l>
+<l>    theta := listAgl_Img_handeye[Index]</l>
+<l>    create_pose (x, y, 0, 0, 0, theta, 'Rp+T', 'gba', 'point', Ob_in_Campose)</l>
+<l>    pose_compose (Ob_in_Campose, CenterR_In_ObPose, Center_In_CamPose)</l>
+<l>    point_x := Center_In_CamPose[0]</l>
+<l>    point_y := Center_In_CamPose[1]</l>
+<l>    tuple_concat (listdata_xOut,point_x,  listdata_xOut)</l>
+<l>    tuple_concat (listdata_yOut,point_y,  listdata_yOut)</l>
+<l>    listdataRobot_x[Index] := listX_Robot_handeye[Index]</l>
+<l>    listdataRobot_y[Index] := listY_Robot_handeye[Index]</l>
+<l>endfor</l>
+<l>vector_to_hom_mat2d (listdata_xOut, listdata_yOut, listdataRobot_x, listdataRobot_y, HomMat_ImgtoWorld)</l>
+<l>vector_to_hom_mat2d (listdataRobot_x, listdataRobot_y, listdata_xOut, listdata_yOut, HomMat_WorldtoImg)</l>
+<l>return ()</l>
+<c></c>
+</body>
+<docu id="handeye_stationary_11_point">
+<parameters>
+<parameter id="HomMat2DImgtoWorld"/>
+<parameter id="HomMat2DWorldtoImg"/>
+<parameter id="listAgl_Img_handeye"/>
+<parameter id="listCol_Img_handeye"/>
+<parameter id="listRow_Img_handeye"/>
+<parameter id="listX_Robot_handeye"/>
+<parameter id="listY_Robot_handeye"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

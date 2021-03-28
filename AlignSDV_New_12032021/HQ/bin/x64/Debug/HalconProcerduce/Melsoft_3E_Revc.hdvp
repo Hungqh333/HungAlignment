@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.2.0">
+<procedure name="Melsoft_3E_Revc">
+<interface>
+<ic>
+<par name="Data_Type" base_type="ctrl" dimension="0"/>
+<par name="Destination" base_type="ctrl" dimension="0"/>
+<par name="Lenght" base_type="ctrl" dimension="0"/>
+<par name="Socket" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Data_Tuple" base_type="ctrl" dimension="0"/>
+<par name="CCode" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Form truyền nhận</c>
+<c>* 3E_Melsoft_Recv(Data_Type, Data, Lenght, Destination, Socket, CCode)</c>
+<c></c>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Dữ liệu đầu vào</c>
+<l>if (Data_Type = 'String') </l>
+<l>      Type_Value := 1</l>
+<l>endif</l>
+<l>if (Data_Type = 'Word') </l>
+<l>      Type_Value := 2</l>
+<l>endif</l>
+<l>if (Data_Type = 'DWord') </l>
+<l>      Type_Value := 3</l>
+<l>endif</l>
+<c></c>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Dữ liệu đầu ra</c>
+<l>Data_Tuple := ''</l>
+<c>* Complete code</c>
+<l>CCode := 0</l>
+<c></c>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Nhận dữ liệu từ PLC</c>
+<c>* Header_2 - Network_1 - PC_1 - Destination IO_2 - Destination Station_1 - Data lenght_2 - Monitor time_2 - Command_n</c>
+<c>* Header Frame 3E là 05 00</c>
+<c>* Network No 00 + PC FF</c>
+<c>* Destination IO mặc định FF 03 + Destination Station mặc định 00</c>
+<c></c>
+<c>* Header</c>
+<l>header_sum_ := [[0x50, 0x00], [0x00], [0xFF], [0xFF, 0x03], [0x00]]</l>
+<l>mornitor_time_ := [0x08, 0x00]</l>
+<c></c>
+<c>* Command + SubCommand</c>
+<l>command_ := [[0x01, 0x04], [0x00, 0x00]]</l>
+<c></c>
+<c>* Head device (Vị trí của vùng nhớ D cần lấy dữ liệu Low_2 + High_1(00). Ví dụ D40000 ~ )</c>
+<l>data_Num := Destination</l>
+<l>temp_str_hexa := data_Num$'4X'</l>
+<l>temp_str_hexa := regexp_replace(temp_str_hexa, [' ', 'replace_all'], '0')</l>
+<l>first_hexa := temp_str_hexa{0:1}</l>
+<l>last_hexa := temp_str_hexa{2:3}</l>
+<l>head_device_ := [number('0x' + last_hexa), number('0x' + first_hexa), [0x00]]</l>
+<c></c>
+<c>* Device code D ~ A8</c>
+<l>device_code_ := [0xA8]</l>
+<c></c>
+<c>* Number device ( Số lượng data cần lấy)</c>
+<l>number_device_point := Lenght</l>
+<l>temp_str_hexa := number_device_point$'4X'</l>
+<l>temp_str_hexa := regexp_replace(temp_str_hexa, [' ', 'replace_all'], '0')</l>
+<l>first_hexa := temp_str_hexa{0:1}</l>
+<l>last_hexa := temp_str_hexa{2:3}</l>
+<l>number_device_ := [number('0x' + last_hexa), number('0x' + first_hexa)]</l>
+<c></c>
+<c>* Tính toán data lenght</c>
+<l>lenght_calculate := |[mornitor_time_, command_, head_device_, device_code_, number_device_]|</l>
+<l>temp_str_hexa := lenght_calculate$'4X'</l>
+<l>temp_str_hexa := regexp_replace(temp_str_hexa, [' ', 'replace_all'], '0')</l>
+<l>first_hexa := temp_str_hexa{0:1}</l>
+<l>last_hexa := temp_str_hexa{2:3}</l>
+<l>data_lenght_ := [number('0x' + last_hexa), number('0x' + first_hexa)]</l>
+<c></c>
+<c>* Tổng hợp tin cần gửi</c>
+<l>mess_summary := [header_sum_, data_lenght_, mornitor_time_, command_, head_device_, device_code_, number_device_]</l>
+<l>data_format := 'C' + |mess_summary|$'d'</l>
+<c></c>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Gửi nhận qua Socket với PLC - Nhận thông tin + Loại bỏ các data không sử dụng</c>
+<l>try </l>
+<l>      send_data (Socket, data_format, mess_summary, [])</l>
+<l>      receive_data (Socket, 'C7', header_response, From)</l>
+<l>      receive_data (Socket, 'C2', lenght_response, From)</l>
+<l>      receive_data (Socket, 'C2', complete_code, From)</l>
+<l>catch (Exception)</l>
+<l>      CCode := Exception[0]</l>
+<l>endtry</l>
+<c></c>
+<c>*----------------------------------------------------------------------------------------------------------------------------------------------------------------</c>
+<c>*^^ Kiểm tra lỗi + Lấy dữ liệu trả về</c>
+<l>if (CCode = 0)</l>
+<l>      if (complete_code == [0x00, 0x00])</l>
+<c>            </c>
+<c>            * Tính toán nhận chuỗi dữ liệu + nhận dữ liệu</c>
+<l>            lenght_converted_string := regexp_replace([lenght_response[1]$'2x' + lenght_response[0]$'2x'], ' ', '0')</l>
+<l>            lenght_converted_string := regexp_replace(lenght_converted_string,[' ', 'replace_all'], '0')</l>
+<l>            lenght_converted := number('0x' + lenght_converted_string) - 2</l>
+<l>            data_format := 'C' + lenght_converted$'d'</l>
+<l>            receive_data (Socket, data_format, data_PLC_D, From)            </l>
+<c>            </c>
+<c>            * Kiểm tra kiểu dữ liệu</c>
+<l>            switch (Type_Value)</l>
+<l>            case 1:</l>
+<c>                  * Kiểu dữ liệu String</c>
+<l>                  tuple_chrt (data_PLC_D, data_String_frm_PLC)</l>
+<l>                  Data_Tuple := data_String_frm_PLC[0]</l>
+<l>                  break</l>
+<l>            case 2:</l>
+<c>                  * Kiểu dữ liệu Word</c>
+<l>                  Data_Tuple := []</l>
+<l>                  if ((lenght_converted / 2) = 1)</l>
+<l>                        lenght_converted := lenght_converted - 1</l>
+<l>                  endif</l>
+<l>                  for I := 0 to lenght_converted - 1 by 2</l>
+<c>                        * Ghép thành chuỗi Hexa</c>
+<l>                        data_Word_Str := regexp_replace([data_PLC_D[I + 1]$'2x' + data_PLC_D[I]$'2x'], [' ', 'replace_all'], '0')                        </l>
+<c>                        * Xử lý số âm</c>
+<l>                        if (data_Word_Str{0} &gt; '7')</l>
+<l>                              data_Word_Str := 'ffffffffffff' + data_Word_Str</l>
+<l>                        endif</l>
+<c>                        * Chuyển đổi thành dạng Int =&gt; thêm vào tuple đầu ra</c>
+<l>                        data_Word := number('0x' + data_Word_Str)</l>
+<l>                        Data_Tuple := [Data_Tuple, data_Word]</l>
+<l>                  endfor</l>
+<l>                  break</l>
+<l>            case 3:</l>
+<c>                  * Kiểu dữ liệu DWord</c>
+<l>                  Data_Tuple := []</l>
+<l>                  if ((lenght_converted / 4) != 0)</l>
+<l>                        lenght_converted := ((lenght_converted / 4)) * 4</l>
+<l>                  endif</l>
+<l>                  for I := 0 to lenght_converted - 1 by 4</l>
+<c>                        * Ghép thành chuỗi Hexa</c>
+<l>                        data_Word_Str := regexp_replace([data_PLC_D[I + 3]$'2x' + data_PLC_D[I + 2]$'2x' + data_PLC_D[I + 1]$'2x' + data_PLC_D[I]$'2x'], [' ', 'replace_all'], '0')         </l>
+<c>                        * Xử lý số âm</c>
+<l>                        if (data_Word_Str{0} &gt; '7')</l>
+<l>                              data_Word_Str := 'ffffffff' + data_Word_Str</l>
+<l>                        endif</l>
+<c>                        * Chuyển đổi thành dạng Int =&gt; thêm vào tuple đầu ra</c>
+<l>                        data_DWord := number(number('0x' + data_Word_Str))</l>
+<l>                        Data_Tuple := [Data_Tuple, data_DWord]</l>
+<l>                  endfor</l>
+<l>                  break</l>
+<l>            default:</l>
+<c>                  * Trả về lỗi sai kiểu dữ liệu</c>
+<l>                  CCode := 8101</l>
+<l>                  break</l>
+<l>            endswitch            </l>
+<l>      else</l>
+<l>            receive_data (Socket, 'z', data_PLC_D, From)</l>
+<l>            data_Dxxx := ''</l>
+<c>            * Lấy dữ liệu mã lỗi</c>
+<l>            temp_complete_code_str := complete_code[1]$'2X' + complete_code[0]$'2X'</l>
+<l>            temp_complete_code_str := regexp_replace(temp_complete_code_str, [' ', 'replace_all'], '0')</l>
+<l>            CCode := number('0x' + temp_complete_code_str)</l>
+<l>      endif</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="Melsoft_3E_Revc">
+<parameters>
+<parameter id="CCode"/>
+<parameter id="Data_Tuple"/>
+<parameter id="Data_Type">
+<default_type>string</default_type>
+<description lang="en_US">Kiểu dữ liệu cần lấy</description>
+<sem_type>any</sem_type>
+<type_list>
+<item>string</item>
+</type_list>
+<values>
+<item>'String'</item>
+<item>'Word'</item>
+<item>'DWord'</item>
+</values>
+</parameter>
+<parameter id="Destination">
+<default_type>integer</default_type>
+<description lang="en_US">Thanh ghi lấy dữ liệu từ PLC - Dxxx</description>
+<type_list>
+<item>integer</item>
+</type_list>
+<value_max>65535</value_max>
+<value_min>0</value_min>
+<values>
+<item>25000</item>
+</values>
+</parameter>
+<parameter id="Lenght">
+<default_type>integer</default_type>
+<description lang="en_US">Độ dài của dữ liệu - Tính theo Word</description>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="Socket">
+<default_type>integer</default_type>
+<mixed_type>false</mixed_type>
+<sem_type>socket</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

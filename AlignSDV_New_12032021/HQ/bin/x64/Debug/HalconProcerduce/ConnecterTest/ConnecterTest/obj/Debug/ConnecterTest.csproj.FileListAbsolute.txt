@@ -1,0 +1,17 @@
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\ConnecterTest.exe.config
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\ConnecterTest.exe
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\ConnecterTest.pdb
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\EntityFramework.xml
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\EntityFramework.SqlServer.xml
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\halcondotnet.xml
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\hdevenginedotnet.xml
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\System.Data.SQLite.xml
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\bin\Debug\System.Data.SQLite.dll.config
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.csprojAssemblyReference.cache
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.FormTest.resources
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.Properties.Resources.resources
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.csproj.GenerateResource.cache
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.csproj.CoreCompileInputs.cache
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.csproj.CopyComplete
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.exe
+E:\Pic_Connector_SDV\ConnecterTest\ConnecterTest\obj\Debug\ConnecterTest.pdb

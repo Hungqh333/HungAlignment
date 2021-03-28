@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.05.0.0">
+<procedure name="check_hand_eye_calibration_input_poses">
+<interface>
+<ic>
+<par name="CalibDataID" base_type="ctrl" dimension="0"/>
+<par name="RotationTolerance" base_type="ctrl" dimension="0"/>
+<par name="TranslationTolerance" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="Warnings" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* This procedure checks the hand-eye calibration input poses that are stored in</c>
+<c>* the calibration data model CalibDataID for consistency.</c>
+<c>* </c>
+<c>* For this check, it is necessary to know the accuracy of the input poses.</c>
+<c>* Therefore, the RotationTolerance and TranslationTolerance must be</c>
+<c>* specified that approximately describe the error in the rotation and in the</c>
+<c>* translation part of the input poses, respectively. The rotation tolerance must</c>
+<c>* be passed in RotationTolerance in radians. The translation tolerance must be</c>
+<c>* passed in TranslationTolerance in the same unit in which the input poses were</c>
+<c>* given, i.e., typically in meters. Therefore, the more accurate the</c>
+<c>* input poses are, the lower the values for RotationTolerance and</c>
+<c>* TranslationTolerance should be chosen. If the accuracy of the robot's tool</c>
+<c>* poses is different from the accuracy of the calibration object poses, the</c>
+<c>* tolerance values of the poses with the lower accuracy (i.e., the higher</c>
+<c>* tolerance values) should be passed.</c>
+<c>* </c>
+<c>* Typically, check_hand_eye_calibration_input_poses is called after all</c>
+<c>* calibration poses have been set in the calibration data model and before the</c>
+<c>* hand eye calibration is performed. The procedure checks all pairs of robot</c>
+<c>* tool poses and compares them to the corresponding pair of calibration object</c>
+<c>* poses. For each inconsistent pose pair, a string is returned in Warnings that</c>
+<c>* indicates the inconsistent pose pair. For larger values for RotationTolerance</c>
+<c>* or TranslationTolerance, i.e., for less accurate input poses, fewer warnings</c>
+<c>* will be generated because the check is more tolerant, and vice versa. The</c>
+<c>* procedure is also helpful if the errors that are returned by the hand-eye</c>
+<c>* calibration are larger than expected to identify potentially erroneous poses.</c>
+<c>* Note that it is not possible to check the consistency of a single pose but</c>
+<c>* only of pose pairs. Nevertheless, if a certain pose occurs multiple times in</c>
+<c>* different warning messages, it is likely that the pose is erroneous.</c>
+<c>* Erroneous poses that result in inconsistent pose pairs should removed</c>
+<c>* from the calibration data model by using remove_calib_data_observ and</c>
+<c>* remove_calib_data before performing the hand-eye calibration.</c>
+<c>* </c>
+<c>* check_hand_eye_calibration_input_poses also checks whether enough calibration</c>
+<c>* pose pairs are passed with a significant relative rotation angle, which</c>
+<c>* is necessary for a robust hand-eye calibration.</c>
+<c>* </c>
+<c>* check_hand_eye_calibration_input_poses also verifies that the correct</c>
+<c>* calibration model was chosen in create_calib_data. If a model of type</c>
+<c>* 'hand_eye_stationary_cam' or 'hand_eye_moving_cam' was chosen, the calibration</c>
+<c>* of an articulated robot is assumed. For 'hand_eye_scara_stationary_cam' or</c>
+<c>* 'hand_eye_scara_moving_cam', the calibration of a SCARA robot is assumed.</c>
+<c>* Therefore, if all input poses for an articulated robot are parallel or if some</c>
+<c>* robot poses for a SCARA robot are tilted, a corresponding message is returned</c>
+<c>* in Warnings. Furthermore, if the number of tilted input poses for articulated</c>
+<c>* robots is below a certain value, a corresponding message in Warnings indicates</c>
+<c>* that the accuracy of the result of the hand-eye calibration might be low.</c>
+<c>* </c>
+<c>* If no problems have been detected in the input poses, an empty tuple is</c>
+<c>* returned in Warnings.</c>
+<c>* </c>
+<c>* </c>
+<c>* Define the minimum fraction of pose pairs with a rotation angle exceeding</c>
+<c>* 2*RotationTolerance.</c>
+<l>MinLargeRotationFraction := 0.1</l>
+<c>* Define the minimum fraction of screw axes pairs with an angle exceeding</c>
+<c>* 2*RotationTolerance for articulated robots.</c>
+<l>MinLargeAnglesFraction := 0.1</l>
+<c>* Factor that is used to multiply the standard deviations to obtain an error</c>
+<c>* threshold.</c>
+<l>StdDevFactor := 3.0</l>
+<c>* </c>
+<c>* Check input control parameters.</c>
+<l>if (|CalibDataID| != 1)</l>
+<l>    throw ('Wrong number of values of control parameter: 1')</l>
+<l>endif</l>
+<l>if (|RotationTolerance| != 1)</l>
+<l>    throw ('Wrong number of values of control parameter: 2')</l>
+<l>endif</l>
+<l>if (|TranslationTolerance| != 1)</l>
+<l>    throw ('Wrong number of values of control parameter: 3')</l>
+<l>endif</l>
+<l>try</l>
+<l>    get_calib_data (CalibDataID, 'model', 'general', 'type', Type)</l>
+<l>catch (Exception)</l>
+<l>    throw ('Wrong value of control parameter: 1')</l>
+<l>endtry</l>
+<l>if (RotationTolerance &lt; 0)</l>
+<l>    throw ('Wrong value of control parameter: 2')</l>
+<l>endif</l>
+<l>if (TranslationTolerance &lt; 0)</l>
+<l>    throw ('Wrong value of control parameter: 3')</l>
+<l>endif</l>
+<c>* </c>
+<c>* Read out the calibration data model.</c>
+<l>IsHandEyeScara := Type == 'hand_eye_scara_stationary_cam' or Type == 'hand_eye_scara_moving_cam'</l>
+<l>IsHandEyeArticulated := Type == 'hand_eye_stationary_cam' or Type == 'hand_eye_moving_cam'</l>
+<c>* This procedure only works for hand-eye calibration applications.</c>
+<l>if (not IsHandEyeScara and not IsHandEyeArticulated)</l>
+<l>    throw ('check_hand_eye_calibration_input_poses only works for hand-eye calibrations')</l>
+<l>endif</l>
+<l>get_calib_data (CalibDataID, 'model', 'general', 'num_cameras', NumCameras)</l>
+<l>get_calib_data (CalibDataID, 'model', 'general', 'num_calib_objs', NumCalibObjs)</l>
+<c>* </c>
+<c>* Get all valid calibration pose indices.</c>
+<l>query_calib_data_observ_indices (CalibDataID, 'camera', 0, I1, PosesIdx)</l>
+<l>RefCalibDataID := CalibDataID</l>
+<l>UseTemporaryCopy := false</l>
+<c>* If necessary, calibrate the interior camera parameters.</c>
+<l>if (IsHandEyeArticulated)</l>
+<c>    * For articulated (non-SCARA) robots, we have to check whether the camera</c>
+<c>    * is already calibrated. Otherwise, the queried poses might not be very</c>
+<c>    * accurate.</c>
+<l>    try</l>
+<l>        get_calib_data (CalibDataID, 'calib_obj_pose', [0,PosesIdx[0]], 'pose', CamPoseCal)</l>
+<l>    catch (Exception)</l>
+<l>        if (NumCameras != 0 and NumCalibObjs != 0)</l>
+<c>            * If the interior camera parameters are not calibrated yet, perform</c>
+<c>            * the camera calibration by using a temporary copy of the calibration</c>
+<c>            * data model.</c>
+<l>            serialize_calib_data (CalibDataID, SerializedItemHandle)</l>
+<l>            deserialize_calib_data (SerializedItemHandle, TmpCalibDataID)</l>
+<l>            clear_serialized_item (SerializedItemHandle)</l>
+<l>            RefCalibDataID := TmpCalibDataID</l>
+<l>            UseTemporaryCopy := true</l>
+<l>            calibrate_cameras (TmpCalibDataID, Error)</l>
+<l>        endif</l>
+<l>    endtry</l>
+<l>endif</l>
+<c>* Query all robot tool and calibration object poses.</c>
+<l>for Index := 0 to |PosesIdx| - 1 by 1</l>
+<l>    try</l>
+<c>        * For an articulated robot with a camera and a calibration object,</c>
+<c>        * a calibrated poses should always be available.</c>
+<l>        get_calib_data (RefCalibDataID, 'calib_obj_pose', [0,PosesIdx[Index]], 'pose', CamPoseCal)</l>
+<l>    catch (Exception)</l>
+<c>        * For a SCARA robot or for an articulated robots with a general</c>
+<c>        * sensor and no calibration object, directly use the observed poses.</c>
+<l>        get_calib_data_observ_pose (RefCalibDataID, 0, 0, PosesIdx[Index], CamPoseCal)</l>
+<l>    endtry</l>
+<c>    * Transform the calibration object poses to dual quaternions.</c>
+<l>    pose_to_dual_quat (CamPoseCal, CamDualQuatCal)</l>
+<l>    CamDualQuatsCal.at(Index) := CamDualQuatCal</l>
+<c>    * Transform the robot tool pose to dual quaternions.</c>
+<l>    get_calib_data (RefCalibDataID, 'tool', PosesIdx[Index], 'tool_in_base_pose', BasePoseTool)</l>
+<l>    pose_to_dual_quat (BasePoseTool, BaseDualQuatTool)</l>
+<l>    BaseDualQuatsTool.at(Index) := BaseDualQuatTool</l>
+<l>endfor</l>
+<l>NumCalibrationPoses := |PosesIdx|</l>
+<l>if (UseTemporaryCopy)</l>
+<l>    clear_calib_data (TmpCalibDataID)</l>
+<l>endif</l>
+<c>* </c>
+<c>* In the first test, check the poses for consistency. The principle of</c>
+<c>* the hand-eye calibration is that the movement of the robot from time</c>
+<c>* i to time j is represented by the relative pose of the calibration</c>
+<c>* object from i to j in the camera coordinate system and also by the</c>
+<c>* relative pose of the robot tool from i to j in the robot base</c>
+<c>* coordinate system. Because both relative poses represent the same 3D</c>
+<c>* rigid transformation, but only seen from two different coordinate</c>
+<c>* systems, their screw axes differ but their screw angle and their</c>
+<c>* screw translation should be identical. This knowledge can be used to</c>
+<c>* check the consistency of the input poses. Furthermore, remember the</c>
+<c>* screw axes for all robot movements to later check whether the</c>
+<c>* correct calibration model (SCARA or articulated) was selected by the</c>
+<c>* user.</c>
+<l>Warnings := []</l>
+<l>LX2s := []</l>
+<l>LY2s := []</l>
+<l>LZ2s := []</l>
+<l>TranslationToleranceSquared := TranslationTolerance * TranslationTolerance</l>
+<l>RotationToleranceSquared := RotationTolerance * RotationTolerance</l>
+<l>for Index1 := 0 to NumCalibrationPoses - 2 by 1</l>
+<l>    CamDualQuatCal1 := CamDualQuatsCal.at(Index1)</l>
+<l>    dual_quat_conjugate (CamDualQuatCal1, Cal1DualQuatCam)</l>
+<l>    BaseDualQuatTool1 := BaseDualQuatsTool.at(Index1)</l>
+<l>    dual_quat_conjugate (BaseDualQuatTool1, Tool1DualQuatBase)</l>
+<l>    for Index2 := Index1 + 1 to NumCalibrationPoses - 1 by 1</l>
+<c>        * For two robot poses, ...</c>
+<c>        * ... compute the movement of the calibration object in the</c>
+<c>        * camera coordinate system.</c>
+<l>        CamDualQuatCal2 := CamDualQuatsCal.at(Index2)</l>
+<l>        dual_quat_compose (Cal1DualQuatCam, CamDualQuatCal2, DualQuat1)</l>
+<c>        * </c>
+<c>        * ... compute the movement of the tool in the robot base</c>
+<c>        * coordinate system.</c>
+<l>        BaseDualQuatTool2 := BaseDualQuatsTool.at(Index2)</l>
+<l>        dual_quat_compose (Tool1DualQuatBase, BaseDualQuatTool2, DualQuat2)</l>
+<c>        * </c>
+<c>        * Check whether the two movements are consistent. If the two</c>
+<c>        * movements are consistent, the scalar parts of the corresponding</c>
+<c>        * dual quaternions should be equal. For the equality check, we</c>
+<c>        * have to take the accuracy of the input poses into account, which</c>
+<c>        * are given by RotationTolerance and TranslationTolerance.</c>
+<l>        dual_quat_to_screw (DualQuat1, 'moment', LX1, LY1, LZ1, MX1, MY1, MZ1, Rot1, Trans1)</l>
+<l>        dual_quat_to_screw (DualQuat2, 'moment', LX2, LY2, LZ2, MX2, MY2, MZ2, Rot2, Trans2)</l>
+<l>        while (Rot1 &gt; rad(180.0))</l>
+<l>            Rot1 := Rot1 - rad(360.0)</l>
+<l>        endwhile</l>
+<l>        while (Rot2 &gt; rad(180.0))</l>
+<l>            Rot2 := Rot2 - rad(360.0)</l>
+<l>        endwhile</l>
+<c>        * </c>
+<l>        Rot1 := fabs(Rot1)</l>
+<l>        Trans1 := fabs(Trans1)</l>
+<l>        Rot2 := fabs(Rot2)</l>
+<l>        Trans2 := fabs(Trans2)</l>
+<l>        MeanRot := 0.5 * (Rot1 + Rot2)</l>
+<l>        MeanTrans := 0.5 * (Trans1 + Trans2)</l>
+<l>        SinTheta2 := sin(0.5 * MeanRot)</l>
+<l>        CosTheta2 := cos(0.5 * MeanRot)</l>
+<l>        SinTheta2Squared := SinTheta2 * SinTheta2</l>
+<l>        CosTheta2Squared := CosTheta2 * CosTheta2</l>
+<c>        * </c>
+<c>        * 1. Check the scalar part of the real part of the dual quaternion,</c>
+<c>        * which encodes the rotation component of the screw:</c>
+<c>        *   q[0] = cos(theta/2)</c>
+<c>        * Here, theta is the screw rotation angle.</c>
+<l>        ErrorRot := fabs(Rot1 - Rot2)</l>
+<l>        while (ErrorRot &gt; rad(180.0))</l>
+<l>            ErrorRot := ErrorRot - rad(360.0)</l>
+<l>        endwhile</l>
+<l>        ErrorRot := fabs(ErrorRot)</l>
+<c>        * Compute the standard deviation of the scalar part of the real part</c>
+<c>        * by applying the law of error propagation.</c>
+<l>        StdDevQ0 := 0.5 * SinTheta2 * RotationTolerance</l>
+<c>        * Multiply the standard deviation by a factor to increase the certainty.</c>
+<l>        ToleranceDualQuat0 := StdDevFactor * StdDevQ0</l>
+<l>        ErrorDualQuat0 := fabs(fabs(DualQuat2[0]) - fabs(DualQuat1[0]))</l>
+<c>        * </c>
+<c>        * 2. Check the scalar part of the dual part of the dual quaternion,</c>
+<c>        * which encodes translation and rotation components of the screw:</c>
+<c>        *   q[4] = -d/2*sin(theta/2)</c>
+<c>        * Here, d is the screw translation.</c>
+<c>        * </c>
+<c>        * Compute the standard deviation of the scalar part of the dual part</c>
+<c>        * by applying the law of error propagation.</c>
+<l>        StdDevQ4 := sqrt(0.25 * SinTheta2Squared * TranslationToleranceSquared + 0.0625 * MeanTrans * MeanTrans * CosTheta2Squared * RotationToleranceSquared)</l>
+<c>        * Multiply the standard deviation by a factor to increase the certainty.</c>
+<l>        ToleranceDualQuat4 := StdDevFactor * StdDevQ4</l>
+<l>        ErrorDualQuat4 := fabs(fabs(DualQuat2[4]) - fabs(DualQuat1[4]))</l>
+<c>        * If one of the two errors exceeds the computed thresholds, return</c>
+<c>        * a warning for the current pose pair.</c>
+<l>        if (ErrorDualQuat0 &gt; ToleranceDualQuat0 or ErrorDualQuat4 &gt; ToleranceDualQuat4)</l>
+<l>            Message := 'Inconsistent pose pair (' + PosesIdx[Index1]$'2d' + ',' + PosesIdx[Index2]$'2d' + ')'</l>
+<l>            Warnings := [Warnings,Message]</l>
+<l>        endif</l>
+<c>        * </c>
+<c>        * Remember the screw axes (of the robot tool movements) for screws</c>
+<c>        * with a significant rotation part. For movements without rotation</c>
+<c>        * the direction of the screw axis is determined by the translation</c>
+<c>        * part only. Hence, the direction of the screw axis cannot be used</c>
+<c>        * to decide whether an articulated or a SCARA robot is used.</c>
+<l>        if (Rot2 &gt; StdDevFactor * RotationTolerance)</l>
+<l>            LX2s := [LX2s,LX2]</l>
+<l>            LY2s := [LY2s,LY2]</l>
+<l>            LZ2s := [LZ2s,LZ2]</l>
+<l>        endif</l>
+<l>    endfor</l>
+<l>endfor</l>
+<c>* </c>
+<c>* In the second test, we check whether enough calibration poses with a</c>
+<c>* significant rotation part are available for calibration.</c>
+<l>NumPairs := |LX2s|</l>
+<l>NumPairsMax := NumCalibrationPoses * (NumCalibrationPoses - 1) / 2</l>
+<l>if (NumPairs &lt; 2)</l>
+<l>    Message := 'There are not enough rotated calibration poses available.'</l>
+<l>    Warnings := [Warnings,Message]</l>
+<c>    * In this case, we can skip further test.</c>
+<l>    return ()</l>
+<l>endif</l>
+<l>LargeRotationFraction := real(NumPairs) / NumPairsMax</l>
+<l>if (NumPairs &lt; 4 or LargeRotationFraction &lt; MinLargeRotationFraction)</l>
+<l>    Message := 'Only few rotated robot poses available, which might result in a reduced accuracy of the calibration results.'</l>
+<l>    Warnings := [Warnings,Message]</l>
+<l>endif</l>
+<c>* </c>
+<c>* In the third test, we compute the angle between the screw axes with</c>
+<c>* a significant rotation part. For SCARA robots, this angle must be 0 in</c>
+<c>* all cases. For articulated robots, for a significant fraction of robot</c>
+<c>* poses, this angle should exceed a certain threshold. For this test, we</c>
+<c>* use the robot tool poses as they are assumed to be more accurate than the</c>
+<c>* calibration object poses.</c>
+<l>NumPairPairs := NumPairs * (NumPairs - 1) / 2</l>
+<l>NumPairPairsMax := NumPairsMax * (NumPairsMax - 1) / 2</l>
+<l>Angles := gen_tuple_const(NumPairPairs,0)</l>
+<l>Idx := 0</l>
+<l>for Index1 := 0 to NumPairs - 2 by 1</l>
+<l>    LXA := LX2s[Index1]</l>
+<l>    LYA := LY2s[Index1]</l>
+<l>    LZA := LZ2s[Index1]</l>
+<l>    for Index2 := Index1 + 1 to NumPairs - 1 by 1</l>
+<l>        LXB := LX2s[Index2]</l>
+<l>        LYB := LY2s[Index2]</l>
+<l>        LZB := LZ2s[Index2]</l>
+<c>        * Compute the scalar product, i.e. the cosine of the screw</c>
+<c>        * axes. To obtain valid values, crop the cosine to the</c>
+<c>        * interval [-1,1].</c>
+<l>        ScalarProduct := max([min([LXA * LXB + LYA * LYB + LZA * LZB,1]),-1])</l>
+<c>        * Compute the angle between the axes in the range [0,pi/2].</c>
+<l>        Angles[Idx] := acos(fabs(ScalarProduct))</l>
+<l>        Idx := Idx + 1</l>
+<l>    endfor</l>
+<l>endfor</l>
+<c>* Large angles should significantly exceed the RotationTolerance.</c>
+<l>LargeAngles := sum(Angles [&gt;] StdDevFactor * RotationTolerance)</l>
+<c>* Calculate the fraction of pairs of movements, i.e., pairs of pose</c>
+<c>* pairs, that have a large angle between their corresponding screw</c>
+<c>* axes.</c>
+<l>LargeAnglesFraction := real(LargeAngles) / NumPairPairsMax</l>
+<c>* For SCARA robots, all screw axes should be parallel, i.e., no</c>
+<c>* two screw axes should have a large angle.</c>
+<l>if (IsHandEyeScara and LargeAngles &gt; 0)</l>
+<l>    Message := 'The robot poses indicate that this might be an articulated robot, although a SCARA robot was selected in the calibration data model.'</l>
+<l>    Warnings := [Warnings,Message]</l>
+<l>endif</l>
+<c>* For articulated robots, the screw axes should have a large</c>
+<c>* angles.</c>
+<l>if (IsHandEyeArticulated)</l>
+<l>    if (LargeAngles == 0)</l>
+<c>        * If there is no pair of movements with a large angle between</c>
+<c>        * their corresponding screw axes, this might be a SCARA robot.</c>
+<l>        Message := 'The robot poses indicate that this might be a SCARA robot (no tilted robot poses available), although an articulated robot was selected in the calibration data model.'</l>
+<l>        Warnings := [Warnings,Message]</l>
+<l>    elseif (LargeAngles &lt; 3)</l>
+<c>        * If there are at most 2 movements with a large angle between</c>
+<c>        * their corresponding screw axes, the calibration might be</c>
+<c>        * unstable.</c>
+<l>        Message := 'Not enough tilted robot poses available for an accurate calibration of an articulated robot.'</l>
+<l>        Warnings := [Warnings,Message]</l>
+<l>    elseif (LargeAnglesFraction &lt; MinLargeAnglesFraction)</l>
+<c>        * If there is only a low fraction of pairs of movements with</c>
+<c>        * a large angle between their corresponding screw axes, the</c>
+<c>        * accuracy of the calibration might be low.</c>
+<l>        Message := 'Only few tilted robot poses available, which might result in a reduced accuracy of the calibration results.'</l>
+<l>        Warnings := [Warnings,Message]</l>
+<l>    endif</l>
+<l>endif</l>
+<l>return ()</l>
+</body>
+<docu id="check_hand_eye_calibration_input_poses">
+<abstract lang="en_US">check_hand_eye_calibration_input_poses checks the hand-eye calibration input poses that are stored in the calibration data model CalibDataID for consistency.
+
+For this check, it is necessary to know the accuracy of the input poses. Therefore, in RotationTolerance and TranslationTolerance a tolerance must be specified that approximately describes the error in the rotation and in the translation part of the input poses, respectively. The rotation tolerance must be passed in RotationTolerance in radians. The translation tolerance must be passed in  TranslationTolerance in the same unit in which the input poses were given, i.e., typically in meters. Therefore, the more accurate the input poses are, the lower the values for RotationTolerance and TranslationTolerance should be chosen. If the accuracy of the robot's tool poses is different from the accuracy of the calibration object poses, the tolerance values of the poses with the lower accuracy (i.e., the higher tolerance values) should be passed.
+
+Typically, check_hand_eye_calibration_input_poses is called after all calibration poses have been set in the calibration data model and before the hand eye calibration is performed. The procedure checks all pairs of robot tool poses and compares them to the corresponding pair of calibration object poses. For each inconsistent pose pair, in Warnings a string is returned that indicates the inconsistent pose pair. For larger values for RotationTolerance or TranslationTolerance, i.e., for less accurate input poses, fewer warnings will be generated because the check is more tolerant, and vice versa. The procedure is also helpful, if the errors that are returned by the hand-eye calibration are larger than expected to identify potentially erroneous poses.
+
+Note that it is not possible to check the consistency of a single pose but only of pose pairs. Nevertheless, if a certain pose occurs multiple times in different warning messages, it is likely that the pose is erroneous. Erroneous poses that result in inconsistent pose pairs should be removed from the calibration data model by using remove_calib_data_observ and remove_calib_data before performing the hand-eye calibration.
+
+check_hand_eye_calibration_input_poses also checks whether enough calibration pose pairs are passed with a significant relative rotation angle, which is necessary for a robust hand-eye calibration.
+
+check_hand_eye_calibration_input_poses also verifies that the correct calibration model was chosen in create_calib_data. If a model of type 'hand_eye_stationary_cam' or 'hand_eye_moving_cam' was chosen, the calibration of an articulated robot is assumed. For 'hand_eye_scara_stationary_cam' or 'hand_eye_scara_moving_cam', the calibration of a SCARA robot is assumed. Therefore, if for an articulated robot all input poses are parallel or if for a SCARA robot some robot poses are tilted, a corresponding message is returned in Warnings. Furthermore, if for articulated robots, the number of tilted input poses is below a certain value, a corresponding message in Warnings indicates that the accuracy of the result of the hand-eye calibration might be low. 
+
+If no problems have been detected in the input poses, an empty tuple is returned in Warnings.</abstract>
+<chapters lang="de_DE">
+<item>Kalibrierung</item>
+<item>Hand-Auge</item>
+</chapters>
+<chapters lang="en_US">
+<item>Calibration</item>
+<item>Hand-Eye</item>
+</chapters>
+<example lang="en_US">check_hand_eye_calibration_input_poses (CalibDataID, 0.04, 0.002, Warnings)
+if (|Warnings| != 0)
+    * There are warnings that should be checked before performing
+    * the hand-eye calibration
+    stop ()
+endif
+calibrate_hand_eye (CalibDataID, Errors)</example>
+<keywords lang="en_US">
+<item>hand</item>
+<item>eye</item>
+<item>hand-eye</item>
+<item>calibration</item>
+<item>poses</item>
+<item>error</item>
+<item>errors</item>
+</keywords>
+<library lang="de_DE">MVTec Standard Procedures</library>
+<library lang="en_US">MVTec Standard Procedures</library>
+<predecessor>
+<item>create_calib_data</item>
+<item>set_calib_data</item>
+<item>set_calib_data_cam_param</item>
+<item>set_calib_data_calib_object</item>
+<item>find_calib_object</item>
+<item>read_calib_data</item>
+</predecessor>
+<see_also>
+<item>remove_calib_data</item>
+<item>remove_calib_data_observ</item>
+</see_also>
+<short lang="de_DE">Check the input poses for the hand-eye calibration for consistency</short>
+<short lang="en_US">Check the input poses of the hand-eye calibration for consistency.</short>
+<successor>
+<item>calibrate_hand_eye</item>
+</successor>
+<parameters>
+<parameter id="CalibDataID">
+<default_type>integer</default_type>
+<description lang="en_US">Handle of the calibration data model.</description>
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>calib_data</sem_type>
+<type_list>
+<item>integer</item>
+</type_list>
+</parameter>
+<parameter id="RotationTolerance">
+<default_type>real</default_type>
+<default_value>0.05</default_value>
+<description lang="en_US">Tolerance of the rotation part of the input poses [rad].</description>
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>angle.rad</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+<value_min>0.000000</value_min>
+<values>
+<item>0.02</item>
+<item>0.03</item>
+<item>0.04</item>
+<item>0.05</item>
+<item>0.06</item>
+<item>0.08</item>
+<item>0.1</item>
+</values>
+</parameter>
+<parameter id="TranslationTolerance">
+<default_type>real</default_type>
+<default_value>0.005</default_value>
+<description lang="en_US">Tolerance of the translation part of the input poses [m].</description>
+<mixed_type>false</mixed_type>
+<multivalue>false</multivalue>
+<sem_type>real</sem_type>
+<type_list>
+<item>integer</item>
+<item>real</item>
+</type_list>
+<value_min>0.000000</value_min>
+<values>
+<item>[0.001,0.002,0.003,0.004,0.005,0.006,0.007,0.008,0.009,0.01]</item>
+</values>
+</parameter>
+<parameter id="Warnings">
+<default_type>string</default_type>
+<description lang="en_US">Tuple of strings with warnings that contain the identified problems. If no inconsistencies or other problems have been detected, an empty tuple is returned.</description>
+<mixed_type>false</mixed_type>
+<multivalue>true</multivalue>
+<sem_type>string</sem_type>
+<type_list>
+<item>string</item>
+</type_list>
+</parameter>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>

@@ -1,0 +1,18 @@
+14:33:15: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 261
+14:34:33: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 261
+14:54:10: HalconDotNet.HOperatorException: HALCON error #5200: File not found in operator read_data_code_2d_model
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.ReadDataCode2dModel(HTuple fileName, HTuple& dataCodeHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 350
+14:55:25: HalconDotNet.HOperatorException: HALCON error #5200: File not found in operator read_data_code_2d_model
+   at HalconDotNet.HOperatorException.throwOperator(Int32 err, Int32 procIndex)
+   at HalconDotNet.HalconAPI.PostCall(IntPtr proc, Int32 procResult)
+   at HalconDotNet.HOperatorSet.ReadDataCode2dModel(HTuple fileName, HTuple& dataCodeHandle)
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 350
+14:55:39: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 262
+15:2:48: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmReadCode1.getCodeLive() in D:\Project\ITM\RTCVisionCode_11_02_2020_V2\vs2005\frmReadCode1.cs:line 262

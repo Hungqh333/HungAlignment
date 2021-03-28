@@ -1,0 +1,6 @@
+8:51:54: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frm2Cam.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\6.RTCVision\2Cam\RTCVisionCode_26_05_2020\vs2005\frm2Cam.cs:line 324
+9:23:41: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frm2Cam.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\6.RTCVision\2Cam\RTCVisionCode_26_05_2020\vs2005\frm2Cam.cs:line 324
+9:33:47: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frm2Cam.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\6.RTCVision\2Cam\RTCVisionCode_26_05_2020\vs2005\frm2Cam.cs:line 324

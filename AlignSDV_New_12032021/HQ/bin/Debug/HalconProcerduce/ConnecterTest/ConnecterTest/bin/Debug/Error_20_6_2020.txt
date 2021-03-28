@@ -1,0 +1,35 @@
+10:20:45: System.Threading.ThreadAbortException: Thread was being aborted.
+   at RTCVision.frmMainForm.<RunAsync>d__19.MoveNext() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 344
+   at System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start[TStateMachine](TStateMachine& stateMachine)
+   at RTCVision.frmMainForm.RunAsync(List`1 lstFile, DataTable dtRegion, Int32 areaID, ASCIIEncoding encoding)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 296
+11:1:23: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 310
+11:5:12: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 311
+11:5:14: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 311
+11:5:16: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 311
+11:5:18: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 311
+11:5:24: System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at RTCVision.frmMainForm.getCodeLive() in F:\TECHNICAL\NVTHAO\4.Project\11.Gach\RTCVisionCode_26_05_2020\vs2005\frmMainForm.cs:line 311

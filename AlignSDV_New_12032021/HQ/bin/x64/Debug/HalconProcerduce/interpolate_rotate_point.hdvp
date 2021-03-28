@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="20.11.1.1">
+<procedure name="interpolate_rotate_point">
+<interface>
+<ic>
+<par name="x1" base_type="ctrl" dimension="0"/>
+<par name="y1" base_type="ctrl" dimension="0"/>
+<par name="thetaGet" base_type="ctrl" dimension="0"/>
+<par name="x2" base_type="ctrl" dimension="0"/>
+<par name="y2" base_type="ctrl" dimension="0"/>
+<par name="thetaGet2" base_type="ctrl" dimension="0"/>
+</ic>
+<oc>
+<par name="xGetOC" base_type="ctrl" dimension="0"/>
+<par name="yGetOC" base_type="ctrl" dimension="0"/>
+<par name="xobincenterr" base_type="ctrl" dimension="0"/>
+<par name="yobincenterr" base_type="ctrl" dimension="0"/>
+<par name="Ob_In_CenterRPose" base_type="ctrl" dimension="0"/>
+<par name="CenterR_In_ObPose" base_type="ctrl" dimension="0"/>
+</oc>
+</interface>
+<body>
+<c>* Get center rotary in Camera pose (Cal Center Rotary in Cam Pose)</c>
+<c></c>
+<l>xGetOC := (x1 * cos((2 * thetaGet - 2 * thetaGet2)) + x2 * cos((2 * thetaGet - 2 * thetaGet2)) - 0.2E1 * x1 * cos((thetaGet + thetaGet2)) - 0.2E1 * x2 * cos((thetaGet + thetaGet2)) - \
+          0.2E1 * x1 * cos((thetaGet - thetaGet2)) - 0.2E1 * x2 * cos((thetaGet - thetaGet2)) - sin((2 * thetaGet2)) * y1 + y2 * sin((2 * thetaGet2)) +x1 * cos((2 * thetaGet2)) + x2 * cos((2 * thetaGet2)) \
+           + y1 * sin((2 * thetaGet)) - sin((2 * thetaGet)) * y2 + x1 * cos((2 * thetaGet)) + x2 * cos((2 * thetaGet)) + y1 * sin((2 * thetaGet - 2 * thetaGet2)) - y2 * sin((2 * thetaGet - 2 * thetaGet2)) + x1 + x2) / (0.2E1 + 0.2E1 * cos((2 * thetaGet2)) +\
+          0.2E1 * cos((2 * thetaGet)) - 0.4E1 * cos((thetaGet + thetaGet2)) - 0.4E1 * cos((thetaGet - thetaGet2)) + 0.2E1 * cos((2 * thetaGet - 2 * thetaGet2)))</l>
+<c></c>
+<l>yGetOC := (y1 * cos((2 * thetaGet - 2 * thetaGet2)) + y2 * cos((2 * thetaGet - 2 * thetaGet2)) - 0.2E1 * y1 * cos((thetaGet + thetaGet2)) - 0.2E1 * y2 * cos((thetaGet + thetaGet2)) \
+          - 0.2E1 * y1 * cos((thetaGet - thetaGet2)) - 0.2E1 * y2 * cos((thetaGet - thetaGet2)) + x1 * sin((2 * thetaGet2)) - x2 * sin((2 * thetaGet2)) + cos((2 * thetaGet2)) * y1 + \
+          y2 * cos((2 * thetaGet2)) - x1 * sin((2 * thetaGet)) + x2 * sin((2 * thetaGet)) + y1 * cos((2 * thetaGet)) + cos((2 * thetaGet)) * y2 - x1 * sin((2 * thetaGet - 2 * thetaGet2))\
+          + x2 * sin((2 * thetaGet - 2 * thetaGet2)) + y1 + y2) / (0.2E1 + 0.2E1 * cos((2 * thetaGet2)) + 0.2E1 * cos((2 * thetaGet)) - 0.4E1 * cos((thetaGet + thetaGet2)) - 0.4E1 * cos((thetaGet - thetaGet2)) + 0.2E1 * cos((2 * thetaGet - 2 * thetaGet2)))</l>
+<c></c>
+<c>* Get object in center rotary pose</c>
+<c></c>
+<l>xobincenterr := ((y1 * sin((2 * thetaGet)) - yGetOC * sin((2 * thetaGet)) + x1 * cos((2 * thetaGet)) - xGetOC * cos((2 * thetaGet)) + x1 - xGetOC) / cos(thetaGet) / 0.2e1)</l>
+<l>yobincenterr := (-sin(thetaGet) * x1 + cos(thetaGet) * y1 + sin(thetaGet) * xGetOC - yGetOC * cos(thetaGet))</l>
+<c></c>
+<c></c>
+<c></c>
+<c>* Center Rotary in Object Pose   (ObjectHCenterRotary)</c>
+<c></c>
+<l>create_pose (xobincenterr, yobincenterr, 0, 0, 0, 0, 'Rp+T', 'gba', 'point', Ob_In_CenterRPose)</l>
+<l>pose_invert (Ob_In_CenterRPose, CenterR_In_ObPose)</l>
+<l>return ()</l>
+</body>
+<docu id="interpolate_rotate_point">
+<parameters>
+<parameter id="CenterR_In_ObPose"/>
+<parameter id="Ob_In_CenterRPose"/>
+<parameter id="thetaGet"/>
+<parameter id="thetaGet2"/>
+<parameter id="x1"/>
+<parameter id="x2"/>
+<parameter id="xGetOC"/>
+<parameter id="xobincenterr"/>
+<parameter id="y1"/>
+<parameter id="y2"/>
+<parameter id="yGetOC"/>
+<parameter id="yobincenterr"/>
+</parameters>
+</docu>
+</procedure>
+</hdevelop>
